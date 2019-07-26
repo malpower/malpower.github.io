@@ -11,6 +11,6 @@ window.onload=async ()=>
     }
     catch (e)
     {
-        console.error(e);
+        document.getElementById("txt").textContent=e.message;
     }
 }
