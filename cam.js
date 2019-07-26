@@ -8,6 +8,7 @@ window.onload=async ()=>
         console.log(res);
         player.srcObject=res;
         player.play();
+        document.getElementById("txt").textContent="OK";
     }
     catch (e)
     {
