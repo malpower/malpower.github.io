@@ -13,8 +13,16 @@ window.onload=async ()=>
     if (navigator.getUserMedia) {
         navigator.getUserMedia({ audio: true, video: { width: 1280, height: 720 } },
             function (stream) {
+                
                 var video = document.getElementById("ok");
-                video.src = window.URL.createObjectURL(stream);
+                try
+                {
+                    video.src = window.URL.createObjectURL(stream);
+                }
+                catch (e)
+                {
+                    video.srcObject=res;
+                }
                 video.onloadedmetadata = function (e) {
                     video.play();
                 };
