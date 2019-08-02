@@ -1,17 +1,29 @@
+function log(txt)
+{
+    let d=document.getElementById("txt");
+    d.textContent=txt;
+}
 window.onload=async ()=>
 {
-    console.log("JJJ");
-    try
-    {
-        let res=await navigator.mediaDevices.getUserMedia({video: true});
-        let player=document.getElementById("ok");
-        console.log(res);
-        player.srcObject=res;
-        player.play();
-        document.getElementById("txt").textContent="OK";
-    }
-    catch (e)
-    {
-        document.getElementById("txt").textContent=e.message;
+    log("JJJ");
+    navigator.getUserMedia = navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia;
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({ audio: true, video: { width: 1280, height: 720 } },
+            function (stream) {
+                var video = document.querySelector('video');
+                video.src = window.URL.createObjectURL(stream);
+                video.onloadedmetadata = function (e) {
+                    video.play();
+                };
+            },
+            function (err) {
+                log("The following error occurred: " + err.name);
+            }
+        );
+    } else {
+        log("getUserMedia not supported");
     }
 }
