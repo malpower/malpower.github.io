@@ -3,7 +3,7 @@ function log(txt)
     let d=document.getElementById("txt");
     d.textContent=txt;
 }
-window.onload=async ()=>
+window.onload=function()
 {
     log("JJJ");
     navigator.getUserMedia = navigator.getUserMedia ||
