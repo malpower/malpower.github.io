@@ -21,7 +21,7 @@ window.onload=async ()=>
                 }
                 catch (e)
                 {
-                    video.srcObject=res;
+                    video.srcObject=stream;
                 }
                 video.onloadedmetadata = function (e) {
                     video.play();
