@@ -11,7 +11,7 @@ window.onload=function()
         navigator.mozGetUserMedia;
 
     if (navigator.getUserMedia) {
-        navigator.getUserMedia({ audio: true, video: { width: 1280, height: 720 } },
+        navigator.getUserMedia({ video: { width: 1280, height: 720 } },
             function (stream) {
                 
                 var video = document.getElementById("ok");
